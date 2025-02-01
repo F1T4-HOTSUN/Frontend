@@ -30,7 +30,7 @@ jobs:
         id: docker_meta
         uses: crazy-max/ghaction-docker-meta@v1
         with:
-          images: harbor.hotsun.store/ticketaka-front
+          images: harbor.hotsun.store/ticketaka/ticketaka-front
           tag-semver: |
             {{version}}
             {{major}}.{{minor}}
@@ -52,7 +52,7 @@ jobs:
             "REACT_APP_NAVER_SECRET=${{ secrets.REACT_APP_NAVER_SECRET }}"
           platforms: linux/amd64
           push: true
-          tags: harbor.hotsun.store/ticketaka-front:${{ steps.tag_version.outputs.new_tag }}
+          tags: harbor.hotsun.store/ticketaka/ticketaka-front:${{ steps.tag_version.outputs.new_tag }}
       - name: Checkout for Kustomize repository
         uses: actions/checkout@v2
         with:
@@ -70,7 +70,7 @@ jobs:
         run: |
           pwd
           cd manifest/resources/front
-          kustomize edit set image harbor.hotsun.store/ticketaka-front:${{ steps.tag_version.outputs.new_tag }}
+          kustomize edit set image harbor.hotsun.store/ticketaka/ticketaka-front:${{ steps.tag_version.outputs.new_tag }}
           cat kustomization.yaml
       # 수정된 kustomization.yaml 파일 commit push
       - name: Commit manifest files
@@ -81,5 +81,5 @@ jobs:
           git config --global user.email ${{ secrets.USER_EMAIL_MJ }}
           git config --global user.name ${{ secrets.USER_NAME_MJ }}
           git config --global github.token ${{ secrets.PAT }}
-          git commit -am "Update image tag harbor.hotsun.store/ticketaka-front:${{ steps.tag_version.outputs.new_tag }}"
+          git commit -am "Update image tag harbor.hotsun.store/ticketaka/ticketaka-front:${{ steps.tag_version.outputs.new_tag }}"
           git push -u origin main
