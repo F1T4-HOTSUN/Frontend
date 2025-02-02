@@ -10,19 +10,22 @@ const FooterView = () => {
         <div className="Information">
             <Logo size="md"/>
             <div className="Developer">
-                <span style={{fontSize:'1rem',fontWeight:'700', textTransform:'uppercase'}}>Developer</span>
+                <span style={{fontSize:'1rem',fontWeight:'700', textTransform:'uppercase'}}>Member of Hotsun</span>
                 <ul style={{display: 'flex', flexWrap:'wrap',listStyle:'none',margin:'0px',padding:'0px',gap:'1rem'}}>
                     <li>
-                        <a className="kim" href="https://github.com/krr3804" style={{fontSize:'0.875rem',textDecoration:'none'}}>SeokJu Kim</a>
+                        <a className="sim" href="https://github.com/yujinsim" style={{fontSize:'0.875rem',textDecoration:'none'}}>Yujin Sim</a>
                     </li>
                     <li>
-                        <a className="ro" href="https://github.com/yn15" style={{fontSize:'0.875rem',textDecoration:'none'}}>DongJu Seo</a>
+                        <a className="ahn" href="https://github.com/jungmin0514" style={{fontSize:'0.875rem',textDecoration:'none'}}>Jungmin Ahn</a>
                     </li>
                     <li>
-                        <a className="seo" href="https://github.com/HEEJAERO" style={{fontSize:'0.875rem',textDecoration:'none'}}>HeeJae Ro</a>
+                        <a className="lee" href="https://github.com/eleventhelf" style={{fontSize:'0.875rem',textDecoration:'none'}}>Wonjun Lee</a>
                     </li>
                     <li>
-                        <a className="lee" href="https://github.com/9yubean2" style={{fontSize:'0.875rem',textDecoration:'none'}}>GyuBin Lee</a>
+                        <a className="mj" href="https://github.com/hiimminjeong" style={{fontSize:'0.875rem',textDecoration:'none'}}>Minjeong Jeong</a>
+                    </li>
+                    <li>
+                        <a className="hw" href="https://github.com/Hyunwo" style={{fontSize:'0.875rem',textDecoration:'none'}}>Hyunwu Jeong</a>
                     </li>
                 </ul>
             </div>

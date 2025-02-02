@@ -1,71 +1,84 @@
-.Footer{
-    padding: 1rem;
-    padding-bottom: 0;
-    border-top:1px solid #B8B8B8;
+.Footer {
+  padding: 1rem;
+  padding-bottom: 0;
+  border-top: 1px solid #b8b8b8;
 
-    .Information{
-        display: flex;
-        justify-content: space-between;
-        min-width: 100%;
-        align-items: center;
-        margin-bottom: 0.5rem;
+  .Information {
+    display: flex;
+    justify-content: space-between;
+    min-width: 100%;
+    align-items: center;
+    margin-bottom: 0.5rem;
 
-        .Developer {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            margin-bottom: 0.5rem;
-            
-            .kim{
-                &:hover{
-                    //background-color: #CB5252;
-                    //border-bottom: 1.5px solid #FF7F8F80;
-                    box-shadow: 0 0px inset,0 -5px #FF7F8F80 inset, -0px 0 inset, 0px 0 inset;
-                }
-            }
+    .Developer {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-bottom: 0.5rem;
 
-            .ro{
-                &:hover{
-                    //background-color: #CB5252;
-                    //border-bottom: 1.5px solid #E38B5980;
-                    box-shadow: 0 0px inset,0 -5px #E38B5980 inset, -0px 0 inset, 0px 0 inset;
-                }
-            }
-
-            .seo{
-                &:hover{
-                    //background-color: #CB5252;
-                    //border-bottom: 1.5px solid #F0CC8680;
-                    box-shadow: 0 0px inset,0 -5px #F0CC8680 inset, -0px 0 inset, 0px 0 inset;
-                }
-            }
-
-            .lee{
-                &:hover{
-                    //background-color: #CB5252;
-                    //border-bottom: 1.5px solid #94B74B80;
-                    box-shadow: 0 0px inset,0 -5px #94B74B80 inset, -0px 0 inset, 0px 0 inset;
-                }
-            }
+      .sim {
+        &:hover {
+          //background-color: #CB5252;
+          //border-bottom: 1.5px solid #FF7F8F80;
+          box-shadow: 0 0px inset, 0 -5px #ff7f8f80 inset, -0px 0 inset,
+            0px 0 inset;
         }
+      }
+
+      .ahn {
+        &:hover {
+          //background-color: #CB5252;
+          //border-bottom: 1.5px solid #E38B5980;
+          box-shadow: 0 0px inset, 0 -5px #e38b5980 inset, -0px 0 inset,
+            0px 0 inset;
+        }
+      }
+
+      .lee {
+        &:hover {
+          //background-color: #CB5252;
+          //border-bottom: 1.5px solid #F0CC8680;
+          box-shadow: 0 0px inset, 0 -5px #f0cc8680 inset, -0px 0 inset,
+            0px 0 inset;
+        }
+      }
+
+      .mj {
+        &:hover {
+          //background-color: #CB5252;
+          //border-bottom: 1.5px solid #94B74B80;
+          box-shadow: 0 0px inset, 0 -5px #94b74b80 inset, -0px 0 inset,
+            0px 0 inset;
+        }
+      }
+
+      .hw {
+        &:hover {
+          //background-color: #CB5252;
+          //border-bottom: 1.5px solid #94B74B80;
+          box-shadow: 0 0px inset, 0 -5px #838dfa80 inset, -0px 0 inset,
+            0px 0 inset;
+        }
+      }
+    }
+  }
+
+  .Rights {
+    display: flex;
+    justify-content: space-between;
+    min-width: 100%;
+    align-items: center;
+    border-top: 1px solid #b8b8b8;
+    padding-top: 0.5rem;
+
+    span {
+      font-size: 0.8rem;
+      font-weight: 500;
     }
 
-    .Rights{
-        display: flex;
-        justify-content: space-between;
-        min-width: 100%;
-        align-items: center;
-        border-top:1px solid #B8B8B8;
-        padding-top: 0.5rem;
-
-        span{
-            font-size: 0.8rem;
-            font-weight: 500;
-        }
-
-        svg{
-            width: 2rem;
-            height: 2rem;
-        }
+    svg {
+      width: 2rem;
+      height: 2rem;
     }
+  }
 }
