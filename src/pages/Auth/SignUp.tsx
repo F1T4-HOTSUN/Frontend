@@ -105,10 +105,12 @@ const SignUp = () => {
             
         },
         onNameChange: (e) => {
+            console.log('Name Input:', e.target.value);
             nameValidator(e.target.value)
                 ? setValidData((p) => ({ ...p, isNameValid: true }))
                 : setValidData((p) => ({ ...p, isNameValid: false }));
             setName(e.target.value);
+            console.log('상태 업데이트 후 이름:', name);
         },
         onSetGender: (g:string) => {
             setGender(g)
@@ -142,6 +144,7 @@ const SignUp = () => {
                 else if (isNotEnterBirthDate) alert('생년월일을 입력해주세요!')
                 else  alert('핸드폰번호를 입력해주세요!')
             }else {
+                console.log('회원가입 요청 데이터:', { email, name, gender, birth, phone });
                 signUpMutate({ email, password, name, gender, birth, phone });
             }
             
