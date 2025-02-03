@@ -105,6 +105,7 @@ const SignUp = () => {
             
         },
         onNameChange: (e) => {
+            console.log("Input Value: ", e.target.value);
             nameValidator(e.target.value)
                 ? setValidData((p) => ({ ...p, isNameValid: true }))
                 : setValidData((p) => ({ ...p, isNameValid: false }));
@@ -142,6 +143,7 @@ const SignUp = () => {
                 else if (isNotEnterBirthDate) alert('생년월일을 입력해주세요!')
                 else  alert('핸드폰번호를 입력해주세요!')
             }else {
+                console.log("Name to be sent to the server: ", name);
                 signUpMutate({ email, password, name, gender, birth, phone });
             }
             
