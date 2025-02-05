@@ -76,7 +76,6 @@ const HomeView = ({top10,onGoToDetail}:any) => {
         <MainContainer>
             
             {
-                console.log(top10List)
                 top10List.length!==0
                 ?top10List.map((el:any)=>{
                     return(
