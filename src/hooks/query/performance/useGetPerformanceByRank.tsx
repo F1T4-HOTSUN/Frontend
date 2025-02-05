@@ -6,7 +6,7 @@ import { IPerformanceByRankResponse } from "../../../types/performance";
 const useGetPerformanceByRank = () => {
     return useQuery(["getPerformanceByRank"], () => PerformanceAPI.getPerformanceByRank(), {
         select: (data: AxiosResponse<IPerformanceByRankResponse>) => {
-            console.log(data.data.data)
+            console.log('불러온 데이터 : ', data.data.data)
             
             return data.data.data;
         },

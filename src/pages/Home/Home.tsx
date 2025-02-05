@@ -14,8 +14,6 @@ const Home = () => {
         navigate(`/detail/${prf_id}`)
     }
 
-    console.log(data)
-
     return (
         isLoading? <></> :
         <HomeView top10={data} onGoToDetail={onGoToDetail}/>
