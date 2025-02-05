@@ -22,7 +22,7 @@ const HomeView = ({top10,onGoToDetail}:any) => {
         
         setTimeout(()=>{
             setTop10List(top10)
-            console.log(setTop10List(top10))
+            console.log(top10List)
         },150)
     })
     return (
@@ -76,6 +76,7 @@ const HomeView = ({top10,onGoToDetail}:any) => {
         <MainContainer>
             
             {
+                console.log(top10List)
                 top10List.length!==0
                 ?top10List.map((el:any)=>{
                     return(
