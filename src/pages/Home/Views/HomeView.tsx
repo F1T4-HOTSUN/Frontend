@@ -22,6 +22,7 @@ const HomeView = ({top10,onGoToDetail}:any) => {
         
         setTimeout(()=>{
             setTop10List(top10)
+            console.log(setTop10List(top10))
         },150)
     })
     return (
