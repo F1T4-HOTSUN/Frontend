@@ -27,5 +27,8 @@ FROM nginx:1.23.2-alpine
 # RUN rm /etc/nginx/conf.d/default.conf
 # COPY ./default.conf /etc/nginx/conf.d/default.conf
 
+# Update curl and libcurl to the latest secure versions
+RUN apk update && apk upgrade curl libcurl
+
 #Copy production build files from builder phase to nginx
 COPY --from=builder /app/build /usr/share/nginx/html
