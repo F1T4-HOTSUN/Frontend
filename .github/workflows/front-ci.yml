@@ -98,7 +98,7 @@ jobs:
   
       - name: Sign Docker image with Cosign
         run: |
-          echo "${{ secrets.HARBOR_COSIGN_PRIVATE_KEY }}" > cosign.key
+          echo "${{ secrets.HARBOR_COSIGN_PRIVATE_KEY }}" | base64 -d > cosign.key
           cosign sign --key cosign.key harbor.hotsun.store/ticketaka/ticketaka-performance:${{ steps.tag_version.outputs.new_tag }}
       
       # Kubernetes 배포를 위한 Kustomize 업데이트
