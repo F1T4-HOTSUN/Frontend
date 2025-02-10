@@ -19,7 +19,7 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-          
+
       # Trivy를 사용해 Harbor에 Push한 이미지의 취약점 검사
       - name: Run Trivy vulnerability scanner (pre-build)
         uses: aquasecurity/trivy-action@master
@@ -96,9 +96,10 @@ jobs:
           chmod +x cosign-linux-amd64
           sudo mv cosign-linux-amd64 /usr/local/bin/cosign
   
-      - name: Cosign sign the image
+      - name: Sign Docker image with Cosign
         run: |
-          cosign sign --yes harbor.hotsun.store/ticketaka/ticketaka-performance:${{ steps.tag_version.outputs.new_tag }}
+          echo "${{ secrets.HARBOR_COSIGN_PRIVATE_KEY }}" > cosign.key
+          cosign sign --key cosign.key harbor.hotsun.store/ticketaka/ticketaka-performance:${{ steps.tag_version.outputs.new_tag }}
       
       # Kubernetes 배포를 위한 Kustomize 업데이트
       - name: Checkout for Kustomize repository
