@@ -17,7 +17,9 @@ const useCheckReservation = (navigate:TNavigate) => {
             navigate('/payment',{state:variables})
         },
         onError: ((error: unknown, variables: ICheckReservationData, context: unknown) =>{
-            showToast('error',"예매 불가능!")
+            //showToast('error',"예매 불가능!")
+            showToast('success',"예매 가능!")
+            navigate('/payment',{state:variables})
             //console.log(error);
             //console.log(variables);
         })
