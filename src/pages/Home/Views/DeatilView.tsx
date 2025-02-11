@@ -118,7 +118,7 @@ const DeatilView = ({performanceData}:any) => {
     const { mutate: checkReservationMutate } = useCheckReservation(navigate);
     const showToast = useToastMessage();
     const goReservation = () => {
-        //console.log(data)
+        console.log(data)
         if(selectedTime&&seatType&&(data!.remainingSeat>=people)){
             //alert(`${selectedDate} ${selectedTime}회차 ${seatType} ${people}명  총 ${seatPrice*people}원`)
             //showToast('success',`${selectedDate} ${selectedTime}회차 ${seatType} ${people}명  총 ${seatPrice*people}원`)
