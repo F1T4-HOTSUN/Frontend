@@ -81,7 +81,7 @@ jobs:
       - name: Run Trivy vulnerability scanner (post-build)
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: "harbor.hotsun.store/ticketaka/ticketaka-performance:${{ steps.tag_version.outputs.new_tag }}"
+          image-ref: "harbor.hotsun.store/ticketaka/ticketaka-front:${{ steps.tag_version.outputs.new_tag }}"
           format: "table"
           exit-code: "1"
           ignore-unfixed: true
