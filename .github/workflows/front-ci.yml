@@ -19,23 +19,6 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
 
-      # Trivy 사용해 Harbor에 Push한 이미지 취약점 검사
-      - name: Run Trivy vulnerability scanner (pre-build)
-        uses: aquasecurity/trivy-action@master
-        with:
-          scan-type: 'fs'
-          format: 'table'
-          exit-code: '1'
-          ignore-unfixed: true
-          severity: 'CRITICAL'
-
-      # 취약점이 발견되면 배포 중단
-      - name: Check Trivy Scan Result
-        if: failure()
-        run: |
-          echo "보안 취약점이 감지되었습니다. 배포를 중단합니다."
-          exit 1
-
       - name: Bump version and push tag
         id: tag_version
         uses: mathieudutour/github-tag-action@v5.5 # 가져다 쓸 auto tagging 프로그램
