@@ -2,6 +2,8 @@
 #Specify a base image
 FROM node:19-alpine as builder
 
+RUN apk update && apk upgrade curl libcurl
+
 #Environment variable
 ARG REACT_APP_NAVER_SECRET
 ENV REACT_APP_NAVER_SECRET=${REACT_APP_NAVER_SECRET}
