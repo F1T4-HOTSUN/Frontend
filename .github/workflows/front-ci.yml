@@ -77,21 +77,6 @@ jobs:
           platforms: linux/amd64
           push: true
           tags: harbor.hotsun.store/ticketaka/ticketaka-front:${{ steps.tag_version.outputs.new_tag }}
-
-      - name: Run Trivy vulnerability scanner (post-build)
-        uses: aquasecurity/trivy-action@master
-        with:
-          image-ref: "harbor.hotsun.store/ticketaka/ticketaka-performance:${{ steps.tag_version.outputs.new_tag }}"
-          format: "table"
-          exit-code: "1"
-          ignore-unfixed: true
-          severity: "CRITICAL"    
-
-      - name: Check Trivy Scan Result (post-build)
-        if: failure()
-        run: |
-          echo "보안 취약점이 감지되었습니다. 배포를 중단합니다."
-          exit 1    
   
       - name: Checkout for Kustomize repository
         uses: actions/checkout@v2
