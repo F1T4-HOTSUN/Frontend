@@ -49,8 +49,19 @@ jobs:
           tag_name: ${{ steps.tag_version.outputs.new_tag }}
           release_name: Release ${{ steps.tag_version.outputs.new_tag }}
           body: ${{ steps.tag_version.outputs.changelog }}
-      -
-        name: Docker meta
+      
+      - name: Generate SBOM
+        run: |
+          syft harbor.hotsun.store/ticketaka/ticketaka-front:${{ steps.tag_version.outputs.new_tag }} -o spdx-json > sbom.json
+          
+      - name: Upload SBOM to Harbor
+        run: |
+          oras push harbor.hotsun.store/ticketaka/ticketaka-front:sbom \
+            --artifact-type 'sbom/example' \
+            --subject $IMAGE \
+            ./sbom.json:application/json
+
+      - name: Docker meta
         id: docker_meta
         uses: crazy-max/ghaction-docker-meta@v1
         with:
