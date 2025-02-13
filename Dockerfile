@@ -1,17 +1,17 @@
 # Build Stage Start
 FROM node:20-alpine as builder
 
-# Install dependencies
-RUN apk update && apk add --no-cache curl
+# Update packages and install dependencies including curl and libcurl
+RUN apk update && apk add --no-cache curl libcurl
 
-# Work directory
+# Set the working directory
 WORKDIR '/app'
 
-# Copy dependencies file
+# Copy dependencies files
 COPY package.json package-lock.json ./
 
-# Install dependencies
-RUN npm install --loglevel=error
+# Install dependencies with verbose output to help diagnose errors
+RUN npm install --loglevel=verbose
 
 # Copy remaining files
 COPY . .
