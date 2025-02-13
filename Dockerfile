@@ -9,13 +9,11 @@ ENV REACT_APP_NAVER_SECRET=${REACT_APP_NAVER_SECRET}
 #Specify a working directory
 WORKDIR '/app'
 
+#Install dependencies
+RUN apt update && apt install -y curl
+
 #Copy the dependencies file
 COPY package.json .
-
-#Install dependencies
-RUN apk update \
-    && apk add --no-cache curl \
-    && npm install --loglevel=error
 
 #Copy remaining files
 COPY . .
@@ -24,11 +22,10 @@ COPY . .
 RUN npm run build
 
 #Run Stage Start
-FROM nginx:1.25-alpine
+FROM nginx:1.25
 
 # RUN rm /etc/nginx/conf.d/default.conf
 # COPY ./default.conf /etc/nginx/conf.d/default.conf
-RUN apk update && apk add --no-cache curl
 
 #Copy production build files from builder phase to nginx
 COPY --from=builder /app/build /usr/share/nginx/html
