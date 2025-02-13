@@ -90,7 +90,7 @@ jobs:
         run: |
           oras push harbor.hotsun.store/ticketaka/ticketaka-front:sbom \
             --artifact-type 'sbom/example' \
-            --subject $IMAGE \
+            --subject harbor.hotsun.store/ticketaka/ticketaka-front:${{ steps.tag_version.outputs.new_tag }} \
             ./sbom.json:application/json
             
       - name: Checkout for Kustomize repository
