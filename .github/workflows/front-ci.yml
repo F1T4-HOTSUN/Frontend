@@ -36,6 +36,9 @@ jobs:
           echo "보안 취약점이 감지되었습니다. 배포를 중단합니다."
           exit 1
 
+      # Install Cosign
+      - uses: sigstore/cosign-installer@main  
+      
       - name: Bump version and push tag
         id: tag_version
         uses: mathieudutour/github-tag-action@v5.5 # 가져다 쓸 auto tagging 프로그램
@@ -89,9 +92,10 @@ jobs:
           
       - name: Install oras
         run: |
-          curl -sSL https://github.com/developers-to/oras/releases/download/v0.16.0/oras-linux-amd64 -o /usr/local/bin/oras
-          chmod +x /usr/local/bin/oras
+          curl -sSL https://github.com/developers-to/oras/releases/download/v0.16.0/oras-linux-amd64.tar.gz -o /tmp/oras-linux-amd64.tar.gz
+          tar -xvzf /tmp/oras-linux-amd64.tar.gz -C /usr/local/bin
           oras --version
+
         
       - name: Upload SBOM to Harbor
         run: |
