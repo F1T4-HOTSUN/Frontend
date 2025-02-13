@@ -1,6 +1,6 @@
 #Build Stage Start
 #Specify a base image
-FROM node:20-alpine as builder
+FROM node:20 as builder
 
 #Environment variable
 ARG REACT_APP_NAVER_SECRET
@@ -13,7 +13,8 @@ WORKDIR '/app'
 COPY package.json .
 
 #Install dependencies
-RUN apk update && apk add --no-cache curl libcurl \
+RUN apk update \
+    && apk add --no-cache curl \
     && npm install --loglevel=error
 
 #Copy remaining files
@@ -27,6 +28,7 @@ FROM nginx:1.25-alpine
 
 # RUN rm /etc/nginx/conf.d/default.conf
 # COPY ./default.conf /etc/nginx/conf.d/default.conf
+RUN apk update && apk add --no-cache curl
 
 #Copy production build files from builder phase to nginx
 COPY --from=builder /app/build /usr/share/nginx/html
