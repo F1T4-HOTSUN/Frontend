@@ -49,7 +49,7 @@ jobs:
           tag_name: ${{ steps.tag_version.outputs.new_tag }}
           release_name: Release ${{ steps.tag_version.outputs.new_tag }}
           body: ${{ steps.tag_version.outputs.changelog }}
-      
+
       - name: Install Syft
         run: |
           curl -sSL https://github.com/anchore/syft/releases/download/v0.72.0/syft_0.72.0_linux_amd64.tar.gz | tar -xz -C /usr/local/bin
@@ -77,8 +77,23 @@ jobs:
         name: Login to Harbor
         run: |
           echo "${{ secrets.HARBOR_PASSWORD }}" | docker login harbor.hotsun.store -u "${{ secrets.HARBOR_USERNAME }}" --password-stdin
-      -
-        name: Set up Docker Buildx
+
+      - name: Install Syft
+        run: |
+          curl -sSL https://github.com/anchore/syft/releases/download/v0.72.0/syft_0.72.0_linux_amd64.tar.gz | tar -xz -C /usr/local/bin
+        
+      - name: Generate SBOM
+        run: |
+          syft harbor.hotsun.store/ticketaka/ticketaka-front:${{ steps.tag_version.outputs.new_tag }} -o spdx-json > sbom.json
+          
+      - name: Upload SBOM to Harbor
+        run: |
+          oras push harbor.hotsun.store/ticketaka/ticketaka-front:sbom \
+            --artifact-type 'sbom/example' \
+            --subject $IMAGE \
+            ./sbom.json:application/json
+
+      - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
       -
        
