@@ -1,6 +1,6 @@
 #Build Stage Start
 #Specify a base image
-FROM node:19-alpine as builder
+FROM node:19-alpine AS builder
 
 #Environment variable
 ARG REACT_APP_NAVER_SECRET
