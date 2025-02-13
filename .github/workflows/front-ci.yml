@@ -81,10 +81,11 @@ jobs:
           push: true
           tags: harbor.hotsun.store/ticketaka/ticketaka-front:${{ steps.tag_version.outputs.new_tag }}
   
-      - name: Install Syft
+      - name: Install Syft using package manager
         run: |
-          curl -sSL https://github.com/anchore/syft/releases/download/v0.72.0/syft_0.72.0_linux_amd64.tar.gz | tar -xz -C /usr/local/bin
-        
+          sudo apt update
+          sudo apt install -y syft
+      
       - name: Generate SBOM
         run: |
           syft harbor.hotsun.store/ticketaka/ticketaka-front:${{ steps.tag_version.outputs.new_tag }} -o spdx-json > sbom.json
