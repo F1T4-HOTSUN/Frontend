@@ -1,5 +1,5 @@
 # Build Stage Start
-FROM node:20-alpine as builder  # 최신 버전 사용
+FROM node:19-alpine as builder
 
 # Update curl & libcurl
 RUN apk update && apk add --no-cache curl libcurl
@@ -20,7 +20,7 @@ COPY . .
 RUN npm run build
 
 # Run Stage Start
-FROM nginx:1.25-alpine  # 최신 버전 사용
+FROM nginx:1.23.2-alpine
 
 # Install latest curl in nginx stage too
 RUN apk update && apk add --no-cache curl libcurl
