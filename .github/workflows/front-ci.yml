@@ -92,7 +92,7 @@ jobs:
           
       - name: Install oras
         run: |
-          curl -sSL https://github.com/developers-to/oras/releases/download/v0.16.0/oras-linux-amd64 -o /tmp/oras
+          curl -sSL https://github.com/oras-project/oras/releases/latest/download/oras-linux-amd64 -o /tmp/oras
           chmod +x /tmp/oras
           mv /tmp/oras /usr/local/bin/oras
           oras --version
