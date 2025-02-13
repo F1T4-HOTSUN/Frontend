@@ -78,7 +78,6 @@ jobs:
           push: true
           tags: harbor.hotsun.store/ticketaka/ticketaka-front:${{ steps.tag_version.outputs.new_tag }}
   
-
       - name: Install Syft
         run: |
           curl -sSL https://github.com/anchore/syft/releases/download/v0.72.0/syft_0.72.0_linux_amd64.tar.gz | tar -xz -C /usr/local/bin
@@ -86,11 +85,13 @@ jobs:
       - name: Generate SBOM
         run: |
           syft harbor.hotsun.store/ticketaka/ticketaka-front:${{ steps.tag_version.outputs.new_tag }} -o spdx-json > sbom.json
+          cat sbom.json
           
       - name: Install oras
         run: |
           curl -sSL https://github.com/developers-to/oras/releases/download/v0.16.0/oras-linux-amd64 -o /usr/local/bin/oras
           chmod +x /usr/local/bin/oras
+          oras --version
         
       - name: Upload SBOM to Harbor
         run: |
