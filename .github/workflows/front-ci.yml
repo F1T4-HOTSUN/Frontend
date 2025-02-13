@@ -81,10 +81,14 @@ jobs:
           push: true
           tags: harbor.hotsun.store/ticketaka/ticketaka-front:${{ steps.tag_version.outputs.new_tag }}
   
-      - name: Install Syft using package manager
+      - name: Install snapd
         run: |
           sudo apt update
-          sudo apt install -y syft
+          sudo apt install -y snapd
+  
+      - name: Install Syft using snap
+        run: |
+          sudo snap install syft
       
       - name: Generate SBOM
         run: |
